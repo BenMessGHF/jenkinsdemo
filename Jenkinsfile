@@ -52,8 +52,15 @@ pipeline {
                 }
             }
         }
-    }
 
+        stage('Post Actions') {
+            steps {
+                docker.withRegistry('https://registry.hub.docker.com/') {
+                    docker.rmi('myapp:latest')
+                }
+            }
+        }
+    }
     post {
         always {
             // Cleanup
