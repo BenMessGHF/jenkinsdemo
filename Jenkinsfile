@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from your repository
-                git branch: 'main', url:'https://github.com/BenMessGHF/jenkinsdemo.git', credentialsId: 'gitcredentials'
+                git 'https://github.com/BenMessGHF/jenkinsdemo.git'
             }
         }
 
@@ -19,6 +19,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
+                    sh './mvwn clean package'
                     sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
