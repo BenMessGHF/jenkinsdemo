@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     credentials {
         usernamePassword(
             credentialsId: 'github-credentials',
