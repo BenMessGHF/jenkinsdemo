@@ -53,15 +53,7 @@ pipeline {
             }
         }
 
-        stage('Post Actions') {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com/') {
-                        docker.rmi('myapp:latest')
-                    }
-                }
-            }
-        }
+
     }
 
     post {
