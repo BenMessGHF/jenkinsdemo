@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables if needed
-        DOCKER_IMAGE = "myapp"
+        DOCKER_IMAGE = "app"
         DOCKER_TAG = "latest"
     }
 
