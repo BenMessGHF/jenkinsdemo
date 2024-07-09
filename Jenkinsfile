@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    credentials {
+            usernamePassword(
+                credentialsId: 'github-credentials',
+                username: 'BenMessGHF',
+                password: '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'
+            )
+        }
     stages {
         stage('Checkout') {
             steps {
