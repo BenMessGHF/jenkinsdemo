@@ -1,17 +1,11 @@
 pipeline {
     agent any
-    credentials {
-        usernamePassword(
-            credentialsId: 'github-credentials',
-            username: 'BenMessGHF',
-            password: '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'
-        )
-    }
+
     stages {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository
-                git 'https://github.com/BenMessGHF/jenkinsdemo.git'
+                git branch: 'main', url:'https://github.com/BenMessGHF/jenkinsdemo.git', credentialsId: 'gitcredentials'
             }
         }
 
