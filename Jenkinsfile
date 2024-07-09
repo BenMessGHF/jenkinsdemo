@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables if needed
-        DOCKER_IMAGE = "your-docker-image-name"
+        DOCKER_IMAGE = "myapp"
         DOCKER_TAG = "latest"
     }
 
@@ -30,7 +30,8 @@ pipeline {
                 script {
                     // Run your tests here
                     // For example, you could run a container from the built image and execute tests inside it
-                    sh "docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG} bash ./nvmw test"
+                    sh "docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
+                    sh 'docker exec myapp bash ./nvmw test"
                 }
             }
         }
