@@ -8,18 +8,9 @@ pipeline {
     }
 
     stages {
-        stage('Init') {
-            steps {
-                sh 'mkdir -p ${WORKSPACE}/jenkinsdemo'
-                dir("${WORKSPACE}/jenkinsdemo") {
-                    sh 'git init'
-                }
-            }
-        }
-
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/BenMessGHF/jenkinsdemo.git', branch: 'main'
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/BenMessGHF/jenkinsdemo.git']]]
             }
         }
 
@@ -55,8 +46,6 @@ pipeline {
                 }
             }
         }
-
-
     }
 
     post {
