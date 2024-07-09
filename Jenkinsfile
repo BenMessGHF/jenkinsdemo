@@ -21,10 +21,6 @@ pipeline {
                     // Build the Docker image
                     sh 'chmod +x ./mvnw'
                     sh './mvnw clean package'
-                    docker {
-                        image 'docker:latest'
-                        args '-v /var/jenkins_home/workspace/calculpipeline:/calculpipeline'
-                    }
                     sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
@@ -36,7 +32,6 @@ pipeline {
                     // Run your tests here
                     // For example, you could run a container from the built image and execute tests inside it
                     sh "docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
-                    sh "docker exec myapp bash ./nvmw test"
                 }
             }
         }
