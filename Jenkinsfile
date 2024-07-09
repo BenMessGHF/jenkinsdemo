@@ -10,8 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the source code from your repository
-                git 'https://github.com/BenMessGHF/jenkinsdemo.git'
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/BenMessGHF/jenkinsdemo.git']]]
             }
         }
 
