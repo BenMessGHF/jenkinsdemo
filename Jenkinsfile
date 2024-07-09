@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from your repository
-                git 'https://github.com/BenMessGHF/jenkinsdemo.git'
+                git branch: 'main', url: 'https://github.com/BenMessGHF/jenkinsdemo.git', credentialsId: 'gitcredentials'
             }
         }
 
