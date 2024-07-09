@@ -17,15 +17,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                docker {
-                    image 'docker:latest'
-                    args '-v /var/jenkins_home/workspace/calculpipeline:/calculpipeline'
-                }
                 script {
                     // Build the Docker image
                     sh 'chmod +x ./mvnw'
                     sh './mvnw clean package'
-
+                    docker {
+                        image 'docker:latest'
+                        args '-v /var/jenkins_home/workspace/calculpipeline:/calculpipeline'
+                    }
                     sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
